@@ -8,7 +8,9 @@ En vei kan hende ineholder et klikker spil og så videre eller andre mini ting d
 
 
 ## funksjonalitet til spillet
-multichoice
+multichoice, 
+upgrade player, gambling, take dmg attack, 
+
 
 ## utviklingsmetode
 
@@ -20,4 +22,6 @@ Klassediagram blir levert av en engel i powerpoint format
 
 ## plan for videre arbeid
 Starte med starten og prøve å slutte ved slutten
+
+FÅ SPILLET TIL Å FAKTISK FUNKE SELVOM DET KAnSKJE IKKE ER 100% SLIK VI VIL, SÅLENGE DET FUNKER OG ATLT ANNET ER BRA SÅ ER DET FERDIG.
 Jobbe godt gjennom timene for å komme lengt og fullføre hvis det trengs hjemme
