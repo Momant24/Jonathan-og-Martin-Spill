@@ -6,7 +6,7 @@ En oppgave i it2
 
 
 
-## funksjonalitet ti lspillet
+## funksjonalitet til spillet
 
 ## utviklingsmetode
 
