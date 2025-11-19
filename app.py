@@ -1,9 +1,6 @@
 import time
-# from classes.enemy import Enemy
-from classes.entity import Entity
-from classes.player import Player
-# from classes.weapon import Weapon
 
+from classes import Player
 
 Start = input("Press s og så enter for å starte gamet: ")
 

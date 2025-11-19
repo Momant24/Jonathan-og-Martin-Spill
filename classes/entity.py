@@ -1,5 +1,5 @@
 class Entity:
-    def __init__(self, name:str, hp:int, defence:int, strength:int):
+    def __init__(self, name:str, hp:int, defence:int, strength:float):
         self._name = name
         self._hp = hp
         self._defence = defence
