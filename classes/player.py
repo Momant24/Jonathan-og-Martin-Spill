@@ -1,5 +1,5 @@
-from entity import Entity
-from weapon import Weapon
+from .entity import Entity
+from .weapon import Weapon
 from random import randint
 
 
@@ -34,11 +34,16 @@ class Player(Entity, Weapon):
         elif self._hp < 0:
             self._hp = 0
             print("You have died")
-
-spiller = Player("bob", 150, 1.5, 0.7, "Polearm", 45)
+    def liv_igjenn(self):
+        return(self._hp)
+            
+    def dmg_verden(self, minusdm):
+       self._dm =- minusdm
+    
+# spiller = Player("bob", 150, 1.5, 0.7, "Polearm", 45)
 # print(spiller)
 # Player.attack(spiller)
-Player.dmg_taken(spiller)
+# Player.dmg_taken(spiller)
 
 
         

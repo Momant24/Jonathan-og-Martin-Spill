@@ -6,7 +6,7 @@ Start = input("Press s og så enter for å starte gamet: ")
 
 if Start == "S" or Start == "s":
     print("Starter spill")
-    for i in range(2):
+    for i in range(0):
         print("*", end="\r")
         time.sleep(0.5)
         print(" *", end="\r")
@@ -16,7 +16,7 @@ if Start == "S" or Start == "s":
         print("   *", end="\r") 
         time.sleep(0.5)
         print("    ", end="\r")
-    Navn = input("Hva skal karakteren din hete?")
+    Navn = input("Hva skal karakteren din hete?: ")
     Karakteren = Player(Navn, 100, 1, 0.7, "Pinne", 0)
     print(Karakteren)
 
@@ -29,7 +29,9 @@ if Start == "S" or Start == "s":
     if Førstelevvel == 1:
         print("yey")
     else:
-        print("du falt ned til den den frydige skoken og tok 10 dm")
-        Karakteren
+        Karakteren.dmg_verden(10)
+        print(f"du falt ned til den den frydige skoken og tok 10 dm du har nå {Karakteren.liv_igjenn()}")
+        
+
 
 
