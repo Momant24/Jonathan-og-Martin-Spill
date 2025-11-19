@@ -5,11 +5,13 @@ from random import randint
 class Player(Entity, Weapon):
     def __init__(self, name: str, hp: int, defence: int, strength: int, typ: str, dmg: int ):
         Entity.__init__(self, name, hp, defence, strength)
-        self._hp = 500
-        self._defence = 20
-        self._strength = 0.5
+        self._hp = hp
+        self._defence = defence
+        self._strength = strength
         Weapon.__init__(self, typ, dmg)
         self._dmg = 0
+        if typ == "Pinne":
+            self._dmg = 5
         if typ == "Katana":
             self._dmg = 38
         elif typ == "Polearm":
@@ -37,7 +39,11 @@ class Player(Entity, Weapon):
             print("You have died")
     
     
-spiller = Player("bob", 150, 20, 50, "Polearm", 45)
-print(spiller)
-Player.attack(spiller)
-Player.dmg_taken(spiller)
+# spiller = Player("bob", 150, 20, 50, "Polearm", 45)
+# print(spiller)
+# Player.attack(spiller)
+# Player.dmg_taken(spiller)
+
+
+        
+        

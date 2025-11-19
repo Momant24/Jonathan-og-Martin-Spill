@@ -6,5 +6,5 @@ class Weapon:
         self._dmg = dmg
 
     def __str__(self):
-        return f"Your Weapon is a {self._typ}, dealing {self._dmg} dmg"
+        return f"Your Weapon is {self._typ}, dealing {self._dmg} dmg"
         
