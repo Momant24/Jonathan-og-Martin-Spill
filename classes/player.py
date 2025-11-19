@@ -35,10 +35,10 @@ class Player(Entity, Weapon):
             self._hp = 0
             print("You have died")
 
-spiller = Player("bob", 150, 1.5, 0.7, "Polearm", 45)
+# spiller = Player("bob", 150, 1.5, 0.7, "Polearm", 45)
 # print(spiller)
 # Player.attack(spiller)
-Player.dmg_taken(spiller)
+# Player.dmg_taken(spiller)
 
 
         
