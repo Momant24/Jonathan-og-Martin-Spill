@@ -1,6 +1,17 @@
 import time
+from random import randint
+from classes import Player, Enemy
 
-from classes import Player
+fiend = Enemy("Orc", 75, 1, 0.7, "pinne", 0)
+def randomEncount():
+    randEnc = randint(1,10)
+    if randEnc >= 5:
+        print(f"You have encountered an {fiend}")
+    elif randEnc < 5:
+        print(f"The {fiend} just about missed you")
+    
+        
+        
 
 Start = input("Press s og så enter for å starte gamet: ")
 

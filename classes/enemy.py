@@ -7,4 +7,4 @@ class Enemy(Entity, Weapon):
         Weapon.__init__(self, typ, dmg)
         
     def __str__(self):
-        return super().__str__()
+        return f"{self._name}"
