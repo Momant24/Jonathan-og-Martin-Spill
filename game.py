@@ -1,4 +1,5 @@
 import time
+import os
 from random import randint
 from classes import Player, Enemy
 
@@ -12,6 +13,7 @@ def randomEncount():
     
 def skog():
     valg = input("I skogen ser du et stort tre som er i full flamme ønsker du å risikere å bli angrepet ved å slukke treet(1), løpe vekk å gjemme deg(2), eller angripe på forhond?(3) ")
+    os.system("cls")
     while valg != "1" and valg != "2" and valg != "3":
         valg = input("Feil velg enten 1 eller 2 eller 3: ")
     if valg == "1":
@@ -25,6 +27,7 @@ def skog():
         Karakteren.nyvopen("Skjor_Pinne")
         print(f"Du her nå {Karakteren._typ} som våpen")
         valg2 = input("Du gjemmer deg i en busk og kan velge å skjynte deg til sikkerhet(1), eller se om treet brenner opp å ta sakene deres.(2): ")
+        os.system("cls")
         while valg2 != "1" and valg2 != "2":
             valg2 = input("Feil velg enten 1 eller 2: ")
         if valg2 == "2":
@@ -35,6 +38,7 @@ def skog():
             print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
 
 
+
         nytt_sted()
     
     else:
@@ -42,9 +46,11 @@ def skog():
         nytt_sted()
     
 def nytt_sted():
+    
     print("Du ser ")
 
 Start = input("Press s og så enter for å starte gamet: ")
+os.system("cls")
 
 if Start == "S" or Start == "s":
     print("Starter spill")
@@ -64,15 +70,17 @@ if Start == "S" or Start == "s":
 
     
     Førstelevvel = input("Du har 2 valg ønsker du å gå inn i en frydig skog(1) eller gå til en Flyvende øy(2): ")
-
+    os.system("cls")
     while Førstelevvel != "1" and Førstelevvel != "2":
         Førstelevvel = input("Feil velg enten 1 eller 2: ")
 
     if Førstelevvel == "1":
         skog()
+        
     else:
         Karakteren.dmg_verden(10)
         print(f"Du falt ned til den den frydige skogen og tok 10 dm du har nå {Karakteren.liv_igjenn()} hp igjenn")
+        os.system("cls")
         skog()
 
         
