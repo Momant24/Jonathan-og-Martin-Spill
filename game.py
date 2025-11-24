@@ -1,6 +1,17 @@
 import time
+from random import randint
+from classes import Player, Enemy
 
-from classes import Player
+fiend = Enemy("Orc", 75, 1, 0.7, "pinne", 0)
+def randomEncount():
+    randEnc = randint(1,10)
+    if randEnc >= 5:
+        print(f"You have encountered an {fiend}")
+    elif randEnc < 5:
+        print(f"The {fiend} just about missed you")
+    
+        
+        
 
 Start = input("Press s og så enter for å starte gamet: ")
 
@@ -27,11 +38,17 @@ if Start == "S" or Start == "s":
         Førstelevvel = input("Feil velg enten 1 eller 2: ")
 
     if Førstelevvel == 1:
-        print("yey")
+        skog()
     else:
         Karakteren.dmg_verden(10)
-        print(f"du falt ned til den den frydige skoken og tok 10 dm du har nå {Karakteren.liv_igjenn()}")
+        print(f"Du falt ned til den den frydige skogen og tok 10 dm du har nå {Karakteren.liv_igjenn()} hp igjenn")
+
         
 
 
+def skog():
+   valg = input("I skoge ser du et stort tre som er i full flamme ønsker du å risikere å bli angrepet å slukke treet(1), løpe vekk å gjemme deg(2), eller angripe på forhond?(3) ")
+   while valg != "1" or Førstelevvel != "2":
+        Førstelevvel = input("Feil velg enten 1 eller 2: ")
+   
 

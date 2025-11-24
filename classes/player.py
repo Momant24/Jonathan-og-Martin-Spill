@@ -27,6 +27,7 @@ class Player(Entity, Weapon):
         critDmg = atk * critRate 
         print(f"You did {round(critDmg) * self._defence} damage to fiend")
         return round(critDmg)
+    
     def dmg_taken(self):
         self._hp -= Player.attack(self) * self._defence 
         if self._hp > 0:
@@ -34,11 +35,14 @@ class Player(Entity, Weapon):
         elif self._hp < 0:
             self._hp = 0
             print("You have died")
+
+    def dmg_verden(self, minusdm):
+       self._hp = self._hp - minusdm
+
     def liv_igjenn(self):
         return(self._hp)
             
-    def dmg_verden(self, minusdm):
-       self._dm =- minusdm
+    
     
 # spiller = Player("bob", 150, 1.5, 0.7, "Polearm", 45)
 # print(spiller)

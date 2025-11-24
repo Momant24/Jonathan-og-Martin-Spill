@@ -6,7 +6,7 @@ class Entity:
         self._strength = strength
     
     def __str__(self):
-        return f"Entity, Name: {self._name}, hp: {self._hp} , defence: {self._defence} , strength: {self._strength} , "
+        return f"Entity, Name: {self._name} \n hp: {self._hp} \n defence: {self._defence} \n strength: {self._strength} \n"
     
 
     
