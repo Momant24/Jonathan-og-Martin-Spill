@@ -12,7 +12,7 @@ def randomEncount():
     
 def skog():
     valg = input("I skogen ser du et stort tre som er i full flamme ønsker du å risikere å bli angrepet ved å slukke treet(1), løpe vekk å gjemme deg(2), eller angripe på forhond?(3) ")
-    while valg != "1" and Førstelevvel != "2" and Førstelevvel != "3":
+    while valg != "1" and valg != "2" and valg != "3":
         valg = input("Feil velg enten 1 eller 2 eller 3: ")
     if valg == "1":
         print("Sekken din beynner å brenne å du mister 20 hp. Men du redder det gigantiske treet og han gir deg en edel pinne som gjør 5dm og sier at hvis du noen gang trenger hjelp vil han komme til din hjelp!")
@@ -21,9 +21,20 @@ def skog():
         nytt_sted()
 
     elif valg == "2":
-        print("Du glmete baggen din i all hast og mistet pinnen din. Du finner en ny pinne på bakken men den ser tørr og skjør ut og vil bare ta 1 dm istede for di gamle 2")
+        print("Du glmete baggen din i all hast og ser den bli tråkket på av treet. I den var pinnen din. Du finner en ny pinne på bakken men den ser tørr og skjør ut og vil bare ta 1 dm istede for di gamle 2")
         Karakteren.nyvopen("Skjor_Pinne")
         print(f"Du her nå {Karakteren._typ} som våpen")
+        valg2 = input("Du gjemmer deg i en busk og kan velge å skjynte deg til sikkerhet(1), eller se om treet brenner opp å ta sakene deres.(2): ")
+        while valg2 != "1" and valg2 != "2":
+            valg2 = input("Feil velg enten 1 eller 2: ")
+        if valg2 == "2":
+            print("Treet har brent opp til aske og du finner en Svidd_Edel_Pinne, men det detter en fugl i hodet ditt og du tar 20 dm")
+            Karakteren.dmg_verden(20)
+            Karakteren.nyvopen("Svidd_Edel_Pinne")
+            print(f"Du her nå {Karakteren._typ} som våpen")
+            print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
+
+
         nytt_sted()
     
     else:
@@ -31,7 +42,7 @@ def skog():
         nytt_sted()
     
 def nytt_sted():
-    print("Hei")
+    print("Du ser ")
 
 Start = input("Press s og så enter for å starte gamet: ")
 
@@ -57,7 +68,7 @@ if Start == "S" or Start == "s":
     while Førstelevvel != "1" and Førstelevvel != "2":
         Førstelevvel = input("Feil velg enten 1 eller 2: ")
 
-    if Førstelevvel == 1:
+    if Førstelevvel == "1":
         skog()
     else:
         Karakteren.dmg_verden(10)

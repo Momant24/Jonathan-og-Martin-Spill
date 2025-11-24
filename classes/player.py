@@ -12,6 +12,8 @@ class Player(Entity, Weapon):
             self._dmg = 1
         elif typ == "Pinne":
             self._dmg = 2
+        elif typ == "Svidd_Edel_Pinne":
+            self._db = 3
         elif typ == "Edel_Pinne":
             self.dmg = 5
         elif typ == "Katana":
