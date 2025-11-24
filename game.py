@@ -14,9 +14,11 @@ def skog():
     valg = input("I skogen ser du et stort tre som er i full flamme ønsker du å risikere å bli angrepet ved å slukke treet(1), løpe vekk å gjemme deg(2), eller angripe på forhond?(3) ")
     while valg != "1" and Førstelevvel != "2" and Førstelevvel != "3":
         valg = input("Feil velg enten 1 eller 2 eller 3: ")
-    if valg == 1:
+    if valg == "1":
         print("Sekken din beynner å brenne å du mister 20 hp. Men du redder det gigantiske treet og han gir deg en edel pinne som gjør 10dm og sier at hvis du noen gang trenger hjelp vil han komme til din hjelp!")
         Karakteren.nyvopen("Edel Pinne")
+    elif valg == "2":
+        print("Wompwopmp")
     
 
 Start = input("Press s og så enter for å starte gamet: ")
