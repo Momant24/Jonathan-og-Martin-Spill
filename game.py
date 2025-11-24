@@ -12,8 +12,8 @@ def randomEncount():
     
 def skog():
    valg = input("I skoge ser du et stort tre som er i full flamme ønsker du å risikere å bli angrepet å slukke treet(1), løpe vekk å gjemme deg(2), eller angripe på forhond?(3) ")
-   while valg != "1" or Førstelevvel != "2":
-        Førstelevvel = input("Feil velg enten 1 eller 2: ")        
+   while valg != "1" and Førstelevvel != "2":
+        valg = input("Feil velg enten 1 eller 2 eller 3: ")        
         
 
 Start = input("Press s og så enter for å starte gamet: ")
