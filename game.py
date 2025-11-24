@@ -3,6 +3,8 @@ import os
 from random import randint
 from classes import Player, Enemy
 
+Fiskeånde = False
+
 fiend = Enemy("Orc", 75, 1, 0.7, "pinne", 0)
 def randomEncount():
     randEnc = randint(1,10)
@@ -46,8 +48,35 @@ def skog():
         nytt_sted()
     
 def nytt_sted():
-    
-    print("Du ser ")
+    valg3 = input("Du ser en vakker insjø(1), og en stor glødene vulkan(2). Hvor vil du gå?: ")
+    os.system("cls")
+    while valg3 != "1" and valg3 != "2":
+        valg4 = input("Feil velg enten 1 eller 2: ")
+
+    if valg3 == "1":
+        randomEncount()
+        valg4 = input("Til venstre ser du insjøen dele seg i to som jesus står gjemt bak et tre og holder veien framover åpen for deg(1), eller ønsker du å ungå denne tråldommen og svømme over, du skimter små fisk i vannet(2): ")
+        os.system("cls")
+        while valg4 != "1" and valg3 != "2":
+            valg4 = input("Feil velg enten 1 eller 2: ")
+        if valg4 == "1":
+            print("Du beveger deg usikker bortover den våte bunnen av insjøen med vannet stigende over deg på hvær sin side når en fisk flyr ut av den ene veggen rett inn i munnen din. Du føler deg god og mett og får 10 hp og en ånde stinkende av fisk")
+            Karakteren.dmg_verden(-10)
+            print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
+            Fiskeånde = True
+            andresiden()    
+        else:
+            valg5 = input("Du svømmer kjapt men skipter en fisk komme skytende mot deg den biter deg i rompa i det du kommer til land. Du tar 10 dm. Du kan velge ønsker du å stikke pirayaen på tuppen av en pinne og bruke den som våpen eller grille den?: ")
+    else:
+        
+        print(f"Du falt ned til den den frydige skogen og tok 10 dm du har nå {Karakteren.liv_igjenn()} hp igjenn")
+        os.system("cls")
+        skog()
+
+def andresiden():
+    print("Yey nytt sted")
+
+
 
 Start = input("Press s og så enter for å starte gamet: ")
 os.system("cls")
