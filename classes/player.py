@@ -10,7 +10,9 @@ class Player(Entity, Weapon):
         self._dmg = 0
         if typ == "Pinne":
             self._dmg = 2
-        if typ == "Katana":
+        elif typ == "Edel Pinne":
+            self.dmg = 5
+        elif typ == "Katana":
             self._dmg = 8
         elif typ == "Polearm":
             self._dmg = 10
