@@ -8,9 +8,11 @@ class Player(Entity, Weapon):
         Entity.__init__(self, name, hp, defence, strength)
         Weapon.__init__(self, typ, dmg)
         self._dmg = 0
-        if typ == "Pinne":
+        if typ == "Skjor_Pinne":
+            self._dmg = 1
+        elif typ == "Pinne":
             self._dmg = 2
-        elif typ == "Edel Pinne":
+        elif typ == "Edel_Pinne":
             self.dmg = 5
         elif typ == "Katana":
             self._dmg = 8

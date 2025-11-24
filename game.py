@@ -15,11 +15,23 @@ def skog():
     while valg != "1" and Førstelevvel != "2" and Førstelevvel != "3":
         valg = input("Feil velg enten 1 eller 2 eller 3: ")
     if valg == "1":
-        print("Sekken din beynner å brenne å du mister 20 hp. Men du redder det gigantiske treet og han gir deg en edel pinne som gjør 10dm og sier at hvis du noen gang trenger hjelp vil han komme til din hjelp!")
-        Karakteren.nyvopen("Edel Pinne")
+        print("Sekken din beynner å brenne å du mister 20 hp. Men du redder det gigantiske treet og han gir deg en edel pinne som gjør 5dm og sier at hvis du noen gang trenger hjelp vil han komme til din hjelp!")
+        Karakteren.nyvopen("Edel_Pinne")
+        print(f"Du her nå {Karakteren._typ} som våpen")
+        nytt_sted()
+
     elif valg == "2":
-        print("Wompwopmp")
+        print("Du glmete baggen din i all hast og mistet pinnen din. Du finner en ny pinne på bakken men den ser tørr og skjør ut og vil bare ta 1 dm istede for di gamle 2")
+        Karakteren.nyvopen("Skjor_Pinne")
+        print(f"Du her nå {Karakteren._typ} som våpen")
+        nytt_sted()
     
+    else:
+        print("Du kjemper")
+        nytt_sted()
+    
+def nytt_sted():
+    print("Hei")
 
 Start = input("Press s og så enter for å starte gamet: ")
 
