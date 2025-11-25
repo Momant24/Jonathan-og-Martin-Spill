@@ -8,13 +8,14 @@ class Enemy(Entity, Weapon):
         Weapon.__init__(self, typ, dmg)
         
     def __str__(self):
-        return f"{self._name}"
+        return Entity.__str__(self) + Weapon.__str__(self)
     
-    def attack(self):
+    def attack(self,spiller):
         critRate = randint(1,2)
         atk = self._dmg / self._strength
-        critDmg = atk * critRate 
-        print(f"You did {round(critDmg) * self._defence} damage to fiend")
+        atk = atk / spiller._defence
+        critDmg = round(atk)* critRate 
+        print(f"{self._name} gjorde {round(critDmg)} skade på {spiller._name}")
         return round(critDmg)
     
 

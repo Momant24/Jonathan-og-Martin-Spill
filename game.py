@@ -2,8 +2,8 @@ import time
 from random import randint
 from classes import Player, Enemy
 
-fiend = Enemy("Orc", 75, 1, 0.7, "pinne", 0)
-Karakteren = Player("", 100, 1, 0.7, "Pinne", 0)
+fiend = Enemy("Orc", 75, 1.5, 0.5, "pinne", 0)
+Karakteren = Player("", 100, 1.1, 0.5, "Pinne", 0)
 def randomEncount():
     randEnc = randint(1,3)
     if randEnc >= 2:
