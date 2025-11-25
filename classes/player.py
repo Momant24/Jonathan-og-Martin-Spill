@@ -1,6 +1,7 @@
 from .entity import Entity
 from .weapon import Weapon
 from random import randint
+from .enemy import Enemy
 
 
 class Player(Entity, Weapon):
@@ -32,13 +33,6 @@ class Player(Entity, Weapon):
         print(f"You did {round(critDmg) * self._defence} damage to fiend")
         return round(critDmg)
     
-    def dmg_taken(self):
-        self._hp -= Player.attack(self) * self._defence 
-        if self._hp > 0:
-            print(f"you have {self._hp} hp remaining")
-        elif self._hp < 0:
-            self._hp = 0
-            print("You have died")
 
     def dmg_verden(self, minusdm):
        self._hp = self._hp - minusdm

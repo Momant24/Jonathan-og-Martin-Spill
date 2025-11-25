@@ -3,12 +3,15 @@ from random import randint
 from classes import Player, Enemy
 
 fiend = Enemy("Orc", 75, 1, 0.7, "pinne", 0)
+Karakteren = Player("", 100, 1, 0.7, "Pinne", 0)
 def randomEncount():
-    randEnc = randint(1,10)
-    if randEnc >= 5:
-        print(f"You have encountered an {fiend}")
-    elif randEnc < 5:
-        print(f"The {fiend} just about missed you")
+    randEnc = randint(1,3)
+    if randEnc >= 2:
+        print(f"Du har møtt på en {fiend}!")
+    elif randEnc < 2:
+        print(f"{fiend} så deg ikke og du slapp unna.")
+        
+
     
 def skog():
     valg = input("I skogen ser du et stort tre som er i full flamme ønsker du å risikere å bli angrepet ved å slukke treet(1), løpe vekk å gjemme deg(2), eller angripe på forhond?(3) ")
@@ -28,6 +31,7 @@ def skog():
     
     else:
         print("Du kjemper")
+        
         nytt_sted()
     
 def nytt_sted():
