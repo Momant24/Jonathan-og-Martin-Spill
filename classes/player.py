@@ -19,7 +19,7 @@ class Player(Entity, Weapon):
         atk = self._dmg / self._strength
         atk = atk / fiende._defence
         critDmg = round(atk) * critRate 
-        print(f"{self._name} gjorde {round(critDmg)} skade på {fiende._name}")
+        print(f"\n{self._name} gjorde {round(critDmg)} skade på {fiende._name}")
         return round(critDmg)
     
     def playerHeal(self): 
@@ -31,9 +31,11 @@ class Player(Entity, Weapon):
             helth = 10
         elif potion == 3:
             helth = 5
-        playerHelth = self._hp + helth
-        print(f"du helbredet {helth} hp \n du har nå {self._hp} hp")
-        return playerHelth
+        self._hp = self._hp + helth
+        if self._hp < self._maxHp:
+            self._hp = self._maxHp
+        print(f"\n du helbredet {helth} hp \n du har nå {self._hp} hp \n\n")
+
         
     
 
