@@ -64,7 +64,7 @@ def nytt_sted():
         valg4 = input("Feil velg enten 1 eller 2: ")
 
     if valg3 == "1":
-        randomEncount()
+        randomEncount(Karakteren, fiend)
         valg4 = input("Til venstre ser du insjøen dele seg i to som jesus står gjemt bak et tre og holder veien framover åpen for deg(1), eller ønsker du å ungå denne tråldommen og svømme over, du skimter små fisk i vannet(2): ")
         os.system("cls")
         while valg4 != "1" and valg4 != "2":
@@ -235,7 +235,7 @@ def retryFight(karakter, fiende):
             else: 
                 print(f"avslutter kamp... {time.sleep(0.3)} \n {karakter._name}, du skuffer...")
                 break
-randomEncount(Karakteren, fiend)
+
 
 Start = input("Press s og så enter for å starte gamet: ")
 os.system("cls")
