@@ -3,18 +3,20 @@ import os
 from random import randint
 from classes import Player, Enemy
 
+fiend = Enemy("Orc", 75, 1.5, 0.5, "pinne", 0)
+def randomEncount(karakter, fiende):
+    randEnc = randint(1,3)
+    if randEnc >= 2:
+        print(f"Du har møtt på en {fiende._name}!")
+        retryFight(karakter, fiende)
+    elif randEnc < 2:
+        print(f"{fiende._name} så deg ikke og du slapp unna.")
+        
+
 Fiskeånde = 0
 venner = []
 uvenner = []
 
-fiend = Enemy("Orc", 75, 1, 0.7, "pinne", 0)
-def randomEncount():
-    randEnc = randint(1,10)
-    if randEnc >= 5:
-        print(f"You have encountered an {fiend}")
-    elif randEnc < 5:
-        print(f"The {fiend} just about missed you")
-    
 def skog():
     global venner
     valg = input("I skogen ser du et stort tre som er i full flamme ønsker du å risikere å bli angrepet ved å slukke treet(1), løpe vekk å gjemme deg(2), eller angripe på forhond?(3) ")
@@ -49,9 +51,9 @@ def skog():
     
     else:
         print("Du kjemper")
-        nytt_sted()
-    
+       
 def nytt_sted():
+    
     global Fiskeånde
     global venner
     global uvenner
@@ -132,127 +134,113 @@ def ettervulkaninsjø():
     print("Du ser et slott")
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+def EnmyDmg_taken(fiende, karakter):
+    fiende._hp -= Player.attack(karakter, fiende)
+    if fiende._hp > 0:
+        print(f"{fiende._name} har {fiende._hp} hp igjen")
+    elif fiende._hp <= 0:
+        fiende._hp = 0
+        print(f"{fiende._name} har {fiende._hp} hp igjen \n \n")
+    
+        #funksjon for skade på spiller
+def PlayerDmg_taken(karakter, fiende):
+    karakter._hp -= Enemy.attack(fiende, karakter)
+    if karakter._hp > 0:
+        print(f"{karakter._name} har {karakter._hp} hp igjen \n \n")
+    elif karakter._hp < 0:
+        karakter._hp = 0
+
+
+#fuknsjon for combat
+def kjemper(karakter, fiende):
+    print(" Du er blitt angrepet!")
+    time.sleep(0.5)
+    print(f" Din fiende er en {fiende._name}")
+    print(fiende)
+
+
+    
+    while karakter._hp > 0 and fiende._hp > 0:   
+        #valg av handlinger
+        time.sleep(1)
+        print("\n Dine valg!")
+        print(" 1: angrip \n 2: helbred deg selv \n 3: Ryggsekk")
+
+        # spiller sin tur
+        time.sleep(0.1)
+        while True:
+            print(f"Hva velger du å gjøre?:")
+
+            a = input("\n")
+            
+            if a == "1":
+                EnmyDmg_taken(fiende, karakter) 
+                break    
+            elif a == "2":
+                karakter.playerHeal()
+                break
+            elif a == "3":
+                print("\n dust du har ikke en ryggsekk ennå \n Prøv igjen: \n Dine valg! \n 1: angrip \n 2: Helbred degselb \n 3: ryggsekk")
+                continue
+            else:
+                print(" Ugyldig valg, prøv igjen: \n\n Dine valg! \n 1: angrip \n 2: Helbred degselb \n 3: ryggsekk")
+                continue
+        time.sleep(1)
+        
+        
+        # stoppe loop hvis fienden er død
+        if fiende._hp <= 0:
+            break
+        
+        #Fiende sin tur
+        chance = randint(1,20)
+        if chance > 15:
+            fiende.enemyrHeal()
+        else:
+            print(f"\n{fiende._name} Angriper")
+            PlayerDmg_taken(karakter, fiende)
+        
+        #stoppe loop hvis spiller er død
+        if karakter._hp <= 0:
+            break
+        # hivs du vinner combat
+    if karakter._hp <= 0:  
+        print(f"{karakter._name} døde, hva er det du gjør?")
+        
+    elif fiende._hp <= 0:       
+         print(f"{fiende._name} er død, du vant!")   
+        
+def retryFight(karakter, fiende):
+    matchCount = 0
+    while True:
+        kjemper(karakter, fiende)
+        
+        if karakter._hp > 0:
+            if matchCount == 1:
+                print(f" \n gratulerer, du drepte {fiende._name}!")
+            elif matchCount == 2:
+                print(f" {karakter._name}, {karakter._name}, {karakter._name}, hvordan klarte du det ikke på første forsøk?? {time.sleep(0.2)} \n {fiende._name} er lett å drepe...")
+            elif matchCount == 3:
+                print(" Du overlevde. Det tok deg noen forsøk da. kanskje du har tatt feil valg til nå... ")
+            elif matchCount < 3:
+                print(f"avslutter kamp... {time.sleep(0.3)} \n {karakter._name}, du skuffer... \n {matchCount} forsøk, du er ASSS")
+                break
+            break
+            
+        else: 
+            b = input(" Prøve igjen? eller er du for dårlig for det? \n j/n?:")
+            if b.lower() == "j":
+                karakter._hp = karakter._maxHp
+                fiende._hp = fiende._maxHp
+            else: 
+                print(f"avslutter kamp... {time.sleep(0.3)} \n {karakter._name}, du skuffer...")
+                break
+randomEncount(Karakteren, fiend)
 
 Start = input("Press s og så enter for å starte gamet: ")
 os.system("cls")
 
-if Start == "S" or Start == "s":
+if Start.lower() == "s":
     print("Starter spill")
     for i in range(0):
         print("*", end="\r")
