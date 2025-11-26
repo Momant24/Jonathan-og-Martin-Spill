@@ -1,10 +1,11 @@
 from .entity import Entity
 from .weapon import Weapon
 from random import randint
-from .enemy import Enemy
+
 
 
 class Player(Entity, Weapon):
+
     def __init__(self, name: str, hp: int, defence: float, strength: float, typ: str, dmg: int ):
         Entity.__init__(self, name, hp, defence, strength)
         Weapon.__init__(self, typ, dmg)
@@ -13,7 +14,10 @@ class Player(Entity, Weapon):
     def __str__(self):
         return Entity.__str__(self) + Weapon.__str__(self)
 
-    
+    def plusdefence(self, ekstradf):
+        self._defence = self._defence + ekstradf
+        return f"Du har nå {self._defence} i defence"
+      
     def attack(self, fiende):
         critRate = randint(1,2)
         atk = self._dmg / self._strength
@@ -41,6 +45,9 @@ class Player(Entity, Weapon):
 
     def dmg_verden(self, minusdm):
        self._hp = self._hp - minusdm
+    
+    def fultliv(self):
+        self._hp = self._maxHp
 
     def liv_igjenn(self):
         return(self._hp)
