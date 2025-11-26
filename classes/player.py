@@ -9,24 +9,28 @@ class Player(Entity, Weapon):
         Weapon.__init__(self, typ, dmg)
         self._dmg = 0
         if typ == "Skjor_Pinne":
-            self._dmg = 1
-        elif typ == "Pinne":
             self._dmg = 2
+        elif typ == "Pinne":
+            self._dmg = 4
         elif typ == "Svidd_Edel_Pinne":
-            self._db = 3
+            self._db = 6
         elif typ == "Edel_Pinne":
-            self.dmg = 5
+            self.dmg = 10
+        elif typ == "Piraya_Pinne":
+            self._dmg = 12
         elif typ == "Katana":
-            self._dmg = 8
+            self._dmg = 16
         elif typ == "Polearm":
-            self._dmg = 10
+            self._dmg = 20
         elif typ == "bow":
-            self._dmg = 7
+            self._dmg = 14
         
     def __str__(self):
         return Entity.__str__(self) + Weapon.__str__(self)
     
-    
+    def plusdefence(self, ekstradf):
+        self._defence = self._defence + ekstradf
+        return f"Du har nå {self._defence} i defence"
     def attack(self):
         critRate = randint(1,2)
         atk = self._dmg / self._strength

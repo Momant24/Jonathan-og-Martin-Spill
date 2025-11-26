@@ -3,7 +3,9 @@ import os
 from random import randint
 from classes import Player, Enemy
 
-Fiskeånde = False
+Fiskeånde = 0
+venner = []
+uvenner = []
 
 fiend = Enemy("Orc", 75, 1, 0.7, "pinne", 0)
 def randomEncount():
@@ -14,6 +16,7 @@ def randomEncount():
         print(f"The {fiend} just about missed you")
     
 def skog():
+    global venner
     valg = input("I skogen ser du et stort tre som er i full flamme ønsker du å risikere å bli angrepet ved å slukke treet(1), løpe vekk å gjemme deg(2), eller angripe på forhond?(3) ")
     os.system("cls")
     while valg != "1" and valg != "2" and valg != "3":
@@ -22,6 +25,7 @@ def skog():
         print("Sekken din beynner å brenne å du mister 20 hp. Men du redder det gigantiske treet og han gir deg en edel pinne som gjør 5dm og sier at hvis du noen gang trenger hjelp vil han komme til din hjelp!")
         Karakteren.nyvopen("Edel_Pinne")
         print(f"Du her nå {Karakteren._typ} som våpen")
+        venner.append("Storttree")
         nytt_sted()
 
     elif valg == "2":
@@ -48,6 +52,8 @@ def skog():
         nytt_sted()
     
 def nytt_sted():
+    global Fiskeånde
+    global venner
     valg3 = input("Du ser en vakker insjø(1), og en stor glødene vulkan(2). Hvor vil du gå?: ")
     os.system("cls")
     while valg3 != "1" and valg3 != "2":
@@ -57,25 +63,55 @@ def nytt_sted():
         randomEncount()
         valg4 = input("Til venstre ser du insjøen dele seg i to som jesus står gjemt bak et tre og holder veien framover åpen for deg(1), eller ønsker du å ungå denne tråldommen og svømme over, du skimter små fisk i vannet(2): ")
         os.system("cls")
-        while valg4 != "1" and valg3 != "2":
+        while valg4 != "1" and valg4 != "2":
             valg4 = input("Feil velg enten 1 eller 2: ")
         if valg4 == "1":
             print("Du beveger deg usikker bortover den våte bunnen av insjøen med vannet stigende over deg på hvær sin side når en fisk flyr ut av den ene veggen rett inn i munnen din. Du føler deg god og mett og får 10 hp og en ånde stinkende av fisk")
             Karakteren.dmg_verden(-10)
             print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
-            Fiskeånde = True
-            andresiden()    
+            
+            Fiskeånde += 1
+           
         else:
-            valg5 = input("Du svømmer kjapt men skipter en fisk komme skytende mot deg den biter deg i rompa i det du kommer til land. Du tar 10 dm. Du kan velge ønsker du å stikke pirayaen på tuppen av en pinne og bruke den som våpen eller grille den?: ")
+            valg5 = input("Du svømmer kjapt men skipter en fisk komme skytende mot deg den biter deg i rompa i det du kommer til land. Du tar 10 dm. Du kan velge ønsker du å stikke pirayaen på tuppen av en pinne og bruke den som våpen(1), eller grille den?(2): ")
+            os.system("cls")
+            Karakteren.dmg_verden(10)
+            print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
+
+            while valg5 != "1" and valg5 != "2":
+                valg5 = input("Feil velg enten 1 eller 2: ")
+            if valg5 == "1":
+                Karakteren.nyvopen("Piraya_Pinne")
+                print(f"Du her nå {Karakteren._typ} som våpen og {Karakteren._dmg} dmg")
+            else:
+                Karakteren.dmg_verden(-25)
+                print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
+        valg6 = input("Du ser en stor rullende reke som ruller rundt i en sirkel. Den er minst 7 ganger så stor som deg. Vil du gå og rulle med reken(1), vil du gå å ta en bit av reken(2), eller ønsker du og angripe reken(3).")
+        os.system("cls")
+        while valg6 != "1" and valg6 != "2" and valg6 != "3":
+            valg6 = input("Feil velg enten 1 eller 2: ")
+        if valg6 == "1":
+            print("Du ruller med reken og reken virker som den ble glad det virker som du har en venn og stolepå i framtiden. Reken gir deg en stor reke hale som gir deg ekstra defence.")
+            Karakteren.plusdefence(0.4)
+            venner.append("Storreke")
+        elif valg6 == "2":
+            print("Reken blir veldig overasket og dytter deg vekk, du får et rekeskjell i beinet og mister dfence. Men du fikk en bit av reken og healer 5 hp og får en ekstra fiskeånde. Du har en følelse at reken vil huske dette i framtiden")
+            Fiskeånde += 1
+            uvenner.append("Storreke")
+            Karakteren.plusdefence(-0.4)
+        else:
+            print("Du angriper reken")
+        ettervulkaninsjø()
+
+                
     else:
         
         print(f"Du falt ned til den den frydige skogen og tok 10 dm du har nå {Karakteren.liv_igjenn()} hp igjenn")
         os.system("cls")
         skog()
 
-def andresiden():
-    print("Yey nytt sted")
-
+def ettervulkaninsjø()
+    print("Du ser et slott")
 
 
 Start = input("Press s og så enter for å starte gamet: ")
@@ -109,7 +145,6 @@ if Start == "S" or Start == "s":
     else:
         Karakteren.dmg_verden(10)
         print(f"Du falt ned til den den frydige skogen og tok 10 dm du har nå {Karakteren.liv_igjenn()} hp igjenn")
-        os.system("cls")
         skog()
 
         
