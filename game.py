@@ -110,7 +110,7 @@ def nytt_sted():
         os.system("cls")
         skog()
 
-def ettervulkaninsjø()
+def ettervulkaninsjø():
     print("Du ser et slott")
 
 
