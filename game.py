@@ -54,6 +54,8 @@ def skog():
 def nytt_sted():
     global Fiskeånde
     global venner
+    global uvenner
+
     valg3 = input("Du ser en vakker insjø(1), og en stor glødene vulkan(2). Hvor vil du gå?: ")
     os.system("cls")
     while valg3 != "1" and valg3 != "2":
@@ -89,7 +91,7 @@ def nytt_sted():
         valg6 = input("Du ser en stor rullende reke som ruller rundt i en sirkel. Den er minst 7 ganger så stor som deg. Vil du gå og rulle med reken(1), vil du gå å ta en bit av reken(2), eller ønsker du og angripe reken(3).")
         os.system("cls")
         while valg6 != "1" and valg6 != "2" and valg6 != "3":
-            valg6 = input("Feil velg enten 1 eller 2: ")
+            valg6 = input("Feil velg enten 1 eller 2 eller 3: ")
         if valg6 == "1":
             print("Du ruller med reken og reken virker som den ble glad det virker som du har en venn og stolepå i framtiden. Reken gir deg en stor reke hale som gir deg ekstra defence.")
             Karakteren.plusdefence(0.4)
@@ -105,10 +107,26 @@ def nytt_sted():
 
                 
     else:
-        
-        print(f"Du falt ned til den den frydige skogen og tok 10 dm du har nå {Karakteren.liv_igjenn()} hp igjenn")
+        valg7 = input("Du er å toppen av en stor glødene vulkan ønsker du å hoppe oppi(1), danse en reindans på toppen av vulkanen(2), eller offre en random kar som står på den andre siden av krateret av deg?(3) ")
         os.system("cls")
-        skog()
+        while valg7 != "1" and valg7 != "2" and valg7 != 3:
+            valg7 = input("Feil velg enten 1 eller 2 eller 3: ")
+        if valg7 == "1":
+            print("Vulkanen rumler godt og fornøyd du får et deigelig varmt bad i magmaen og får fult liv og magma armor + 0.4 defence. og en vulkann venn for livet.")
+            venner.append("Vulkan")
+            Karakteren.plusdefence(0.4)
+            Karakteren.fultliv()
+        
+        elif valg7 == "2":
+            print("Regngudene har hørt ditt bønn og det starter å reine i bøtter og spann. Vulkanen rumler uhyggelig og du lukter en kvalmende lukt av egg. Før vulkanen stivner til og dør tar du 30 dmg av den giftige hevnen til vulkanen.")
+            Karakteren.dmg_verden(30)
+            print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
+        
+        else:
+            print("Ingen ting skjer men du hører mannen roppe opp fra vulkanen han virker ikke fornayd han sier at han vil finne deg og ta deg. Vulkanen grynter fornøyd. Du får en ny venn og en ny uvenn!")
+            venner.append("Vulkan")
+            uvenner.append("Random_kar")
+        ettervulkaninsjø()
 
 def ettervulkaninsjø():
     print("Du ser et slott")

@@ -1,7 +1,8 @@
 class Entity:
     def __init__(self, name:str, hp:int, defence:float, strength:float):
         self._name = name
-        self._hp = hp
+        self._maxHp = hp
+        self._hp = self._maxHp
         self._defence = defence
         self._strength = strength
     

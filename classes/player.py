@@ -4,6 +4,7 @@ from random import randint
 
 
 class Player(Entity, Weapon):
+
     def __init__(self, name: str, hp: int, defence: float, strength: float, typ: str, dmg: int ):
         Entity.__init__(self, name, hp, defence, strength)
         Weapon.__init__(self, typ, dmg)
@@ -48,6 +49,9 @@ class Player(Entity, Weapon):
 
     def dmg_verden(self, minusdm):
        self._hp = self._hp - minusdm
+    
+    def fultliv(self):
+        self._hp = self._maxHp
 
     def liv_igjenn(self):
         return(self._hp)
