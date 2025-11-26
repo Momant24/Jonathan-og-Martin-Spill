@@ -18,4 +18,16 @@ class Enemy(Entity, Weapon):
         print(f"{self._name} gjorde {round(critDmg)} skade på {spiller._name}")
         return round(critDmg)
     
+    def enemyrHeal(self): 
+        potion = randint(1,3)
+        helth = 0
+        if potion == 1:
+            helth = 10
+        elif potion == 2:
+            helth = 5
+        elif potion == 3:
+            helth = 0
+        enemyHelth = self._hp + helth
+        print(f"{self._name} helbredet {helth} hp \n {self._name} har nå {self._hp} hp")
+        return enemyHelth
 

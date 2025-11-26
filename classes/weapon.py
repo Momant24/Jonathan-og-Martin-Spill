@@ -21,5 +21,5 @@ class Weapon:
     def nyvopen(self, ny):
         self._typ = ny
     def __str__(self):
-        return f"Your Weapon is {self._typ}, \n dealing {self._dmg} dmg"
+        return f"Ditt Våpen er {self._typ}, \n og gjør {self._dmg} skade"
         
