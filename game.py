@@ -39,6 +39,104 @@ def nytt_sted():
     print("Hei")
     
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def EnmyDmg_taken(fiende, karakter):
     fiende._hp -= Player.attack(karakter, fiende)
     if fiende._hp > 0:
@@ -152,6 +250,8 @@ def retryFight(karakter, fiende):
                 print(f"avslutter kamp... {time.sleep(0.3)} \n {karakter._name}, du skuffer...")
                 break
 randomEncount(Karakteren, fiend)
+
+
 Start = input("Press s og så enter for å starte gamet: ")
 
 if Start.lower() == "s":
