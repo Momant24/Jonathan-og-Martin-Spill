@@ -8,12 +8,12 @@ fiend = Enemy("Orc", 15, 1.5, 0.5, "Pinne", 0)
 fiend2 = Enemy("Brennende_Tree", 40, 1.1, 0.9, "Edel_Pinne", 0)
 reke = Enemy("Giga_Reke", 60, 1.5, 0.5, "Reke_Sjell", 0)
 Ridder = Enemy("Ridder", 40, 1.5, 0.5, "Sverd", 0)
-Vokter = Enemy("Ridder", 70, 1.5, 0.5, "Vokter_Pinne", 0)
+Vokter = Enemy("Vokter", 70, 1.5, 0.5, "Vokter_Pinne", 0)
 
 #Tillfeldig møte på fiender
 def randomEncount(karakter, fiende):
     randEnc = randint(1,8)
-    if karakter._fiske_onde < 2:
+    if karakter._fiske_onde < 1:
         if randEnc <= 2:
             print(f"Du har møtt på en {fiende._name}!")
             omvant = retryFight(karakter, fiende)
@@ -21,7 +21,8 @@ def randomEncount(karakter, fiende):
         elif randEnc > 3:
             print(f"{fiende._name} så deg ikke og du slapp unna.")
     else:
-        print(f"Din ånde stinker såpass at {fiende._name} stakk av")
+        Karakteren._fiske_onde -= 1
+        print(f"Din ånde stinker såpass av fisk at {fiende._name} stakk av")
 
 venner = []
 uvenner = []
