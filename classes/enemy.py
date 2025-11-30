@@ -10,14 +10,19 @@ class Enemy(Entity, Weapon):
     def __str__(self):
         return Entity.__str__(self) + Weapon.__str__(self)
     
+    #arrack funksjon som kalles i playerdmg taken funksjonen i game.py
     def attack(self,spiller):
         critRate = randint(1,2)
         atk = self._dmg / self._strength
         atk = atk / spiller._defence
-        critDmg = round(atk)* critRate 
+        if critRate == 2:
+            critDmg = round(atk)* critRate * 0.7
+        else:
+            critDmg = round(atk) 
         print(f"\n{self._name} gjorde {round(critDmg)} skade på {spiller._name}")
         return round(critDmg)
     
+    #healing funksjonen for enemy
     def enemyrHeal(self): 
         potion = randint(1,3)
         helth = 0

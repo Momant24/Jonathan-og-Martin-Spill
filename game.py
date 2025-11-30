@@ -3,26 +3,30 @@ import os
 from random import randint
 from classes import Player, Enemy
 
+#variabler for fiender du kan møte i gamet
 fiend = Enemy("Orc", 15, 1.5, 0.5, "Pinne", 0)
 fiend2 = Enemy("Brennende_Tree", 40, 1.1, 0.9, "Edel_Pinne", 0)
 reke = Enemy("Giga_Reke", 60, 1.5, 0.5, "Reke_Sjell", 0)
 Ridder = Enemy("Ridder", 40, 1.5, 0.5, "Sverd", 0)
 Vokter = Enemy("Ridder", 70, 1.5, 0.5, "Vokter_Pinne", 0)
 
+#Tillfeldig møte på fiender
 def randomEncount(karakter, fiende):
     randEnc = randint(1,8)
-    if randEnc <= 2:
-        print(f"Du har møtt på en {fiende._name}!")
-        omvant = retryFight(karakter, fiende)
-        return omvant
-    elif randEnc > 2:
-        print(f"{fiende._name} så deg ikke og du slapp unna.")
-        
+    if karakter._fiske_onde < 2:
+        if randEnc <= 2:
+            print(f"Du har møtt på en {fiende._name}!")
+            omvant = retryFight(karakter, fiende)
+            return omvant
+        elif randEnc > 3:
+            print(f"{fiende._name} så deg ikke og du slapp unna.")
+    else:
+        print(f"Din ånde stinker såpass at {fiende._name} stakk av")
 
-Fiskeånde = 0
 venner = []
 uvenner = []
 
+#Funksjoneer for navigasjon i spillet, altså hva som skjer hvert valg spiller tar
 def skog():
     global venner
     valg = input("I skogen ser du et stort tre som er i full flamme ønsker du å risikere å bli angrepet ved å slukke treet(1), løpe vekk å gjemme deg(2), eller angripe på forhond?(3) ")
@@ -73,7 +77,6 @@ def skog():
        
 def nytt_sted():
     time.sleep(3)
-    global Fiskeånde
     global venner
     global uvenner
 
@@ -92,8 +95,7 @@ def nytt_sted():
             print("Du beveger deg usikker bortover den våte bunnen av insjøen med vannet stigende over deg på hvær sin side når en fisk flyr ut av den ene veggen rett inn i munnen din. Du føler deg god og mett og får 10 hp og en ånde stinkende av fisk")
             Karakteren.dmg_verden(-10)
             print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
-            
-            Fiskeånde += 1
+            Karakteren._fiske_onde += 1
            
         else:
             valg5 = input("Du svømmer kjapt men skipter en fisk komme skytende mot deg den biter deg i rompa i det du kommer til land. Du tar 10 dm. Du kan velge ønsker du å stikke pirayaen på tuppen av en pinne og bruke den som våpen(1), eller grille den?(2): ")
@@ -119,7 +121,7 @@ def nytt_sted():
             venner.append("Storreke")
         elif valg6 == "2":
             print("Reken blir veldig overasket og dytter deg vekk, du får et rekesjell i beinet og mister dfence. Men du fikk en bit av reken og healer 5 hp og får en ekstra fiskeånde. Du har en følelse at reken vil huske dette i framtiden")
-            Fiskeånde += 1
+            Karakteren._fiske_onde += 1
             uvenner.append("Storreke")
             Karakteren.plusdefence(-0.4)
         else:
@@ -269,9 +271,9 @@ def ettervulkaninsjø():
     
 
 
+#funksjoner for dmg og combat, attakc og healing funksjoner er i sine respektive klasser
 
-
-
+#funksjon for skade på fiende
 def EnmyDmg_taken(fiende, karakter):
     fiende._hp -= Player.attack(karakter, fiende)
     if fiende._hp > 0:
@@ -280,7 +282,7 @@ def EnmyDmg_taken(fiende, karakter):
         fiende._hp = 0
         print(f"{fiende._name} har {fiende._hp} hp igjen \n \n")
     
-        #funksjon for skade på spiller
+#funksjon for skade på spiller
 def PlayerDmg_taken(karakter, fiende):
     karakter._hp -= Enemy.attack(fiende, karakter)
     if karakter._hp > 0:
@@ -348,7 +350,8 @@ def kjemper(karakter, fiende):
     elif fiende._hp <= 0:       
          print(f"{fiende._name} er død, du vant!")
    
-        
+
+#funksjonen som skal kalles for å kunne gå inn i combat med muligheten for å kunne prøve på nytt igjen
 def retryFight(karakter, fiende):
     matchCount = 0
     while True:
@@ -381,7 +384,7 @@ def retryFight(karakter, fiende):
                 return "tap"
                 
 
-
+#start spillet
 Start = input("Press s og så enter for å starte gamet: ")
 os.system("cls")
 
