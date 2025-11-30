@@ -219,14 +219,15 @@ def ettervulkaninsjø():
         print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
     input("Du sniker deg gjennom de to dørene. På den andre siden ser du et kjempemonster av alle dine uvenner. Du blåser i hornet ditt og vennene dine kommer: ")
     os.system("cls")
+    Karakteren.fultliv()
     for i in venner:
         if i == "Storttree":
-            Karakteren.dmg_verden(-100)
-            print("Vennen ditt treet møtter opp og gir deg 100 mer hp")
+            Karakteren.dmg_verden(-60)
+            print("Vennen ditt treet møtter opp og gir deg 60 mer hp")
             time.sleep(2)
         elif i == "Storreke":
-            Karakteren.midlertidigdmg(5)
-            print("Vennen ditt Storreke møtter opp og gir deg 5 mer dmg")
+            Karakteren.midlertidigdmg(3)
+            print("Vennen ditt Storreke møtter opp og gir deg 3 mer dmg")
             time.sleep(2)
         elif i == "Vulkan":
             print("Vennen ditt Vulkanen møtter opp og gir deg 0.5 mer dfence")
@@ -239,7 +240,7 @@ def ettervulkaninsjø():
     time.sleep(2)
     for i in uvenner:
         if i == "Skog":
-            print("Din uvenn skogen dukket opp og merga med kongen +35 hp")
+            print("Din uvenn skogen dukket opp og merga med kongen +40 hp")
             fiendehp += 35
             time.sleep(2)
         elif i == "Storreke":
@@ -247,7 +248,7 @@ def ettervulkaninsjø():
             fiendedefence += 0.4
             time.sleep(2)
         elif i == "Random_kar":
-            print("Din uvenn Random_Kar dukket opp og merga med kongen +5 dmg")
+            print("Din uvenn Random_Kar dukket opp og merga med kongen +3 dmg")
             fiendedmg += 5
             time.sleep(2)
 
