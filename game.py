@@ -3,17 +3,17 @@ import os
 from random import randint
 from classes import Player, Enemy
 
-fiend = Enemy("Orc", 75, 1.5, 0.5, "Pinne", 0)
-fiend2 = Enemy("Brennende_Tree", 15, 1.1, 0.9, "Edel_Pinne", 0)
+fiend = Enemy("Orc", 15, 1.5, 0.5, "Pinne", 0)
+fiend2 = Enemy("Brennende_Tree", 40, 1.1, 0.9, "Edel_Pinne", 0)
 reke = Enemy("Giga_Reke", 60, 1.5, 0.5, "Reke_Sjell", 0)
-Ridder = Enemy("Ridder", 120, 1.5, 0.5, "Sverd", 0)
+Ridder = Enemy("Ridder", 40, 1.5, 0.5, "Sverd", 0)
 def randomEncount(karakter, fiende):
     randEnc = randint(1,5)
-    if randEnc >= 2:
+    if randEnc <= 2:
         print(f"Du har møtt på en {fiende._name}!")
         omvant = retryFight(karakter, fiende)
         return omvant
-    elif randEnc < 2:
+    elif randEnc > 3:
         print(f"{fiende._name} så deg ikke og du slapp unna.")
         
 
