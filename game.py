@@ -335,7 +335,11 @@ def kjemper(karakter, fiende):
         #Fiende sin tur
         chance = randint(1,20)
         if chance > 15:
-            fiende.enemyrHeal()
+            if fiende._hp >= fiende._maxHp:
+                print(f"\n{fiende._name} Angriper")
+                PlayerDmg_taken(karakter, fiende)
+            else:
+                fiende.enemyrHeal()
         else:
             print(f"\n{fiende._name} Angriper")
             PlayerDmg_taken(karakter, fiende)
