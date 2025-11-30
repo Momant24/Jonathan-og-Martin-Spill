@@ -9,13 +9,15 @@ reke = Enemy("Giga_Reke", 60, 1.5, 0.5, "Reke_Sjell", 0)
 Ridder = Enemy("Ridder", 40, 1.5, 0.5, "Sverd", 0)
 def randomEncount(karakter, fiende):
     randEnc = randint(1,5)
-    if randEnc <= 2:
-        print(f"Du har møtt på en {fiende._name}!")
-        omvant = retryFight(karakter, fiende)
-        return omvant
-    elif randEnc > 3:
-        print(f"{fiende._name} så deg ikke og du slapp unna.")
-        
+    if Fiskeånde > 2:
+        if randEnc <= 2:
+            print(f"Du har møtt på en {fiende._name}!")
+            omvant = retryFight(karakter, fiende)
+            return omvant
+        elif randEnc > 3:
+            print(f"{fiende._name} så deg ikke og du slapp unna.")
+    else:
+        print(f"Din ånde stinker såpass at {fiende._name} stakk av")
 
 Fiskeånde = 0
 venner = []
