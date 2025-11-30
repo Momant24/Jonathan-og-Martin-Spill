@@ -235,7 +235,7 @@ def ettervulkaninsjø():
             Karakteren.plusdefence(0.5)
             time.sleep(2)
     print(Karakteren)
-    fiendedmg = 10
+    fiendedmg = 9
     fiendehp = 100
     fiendedefence = 1.5
     time.sleep(2)
@@ -250,7 +250,7 @@ def ettervulkaninsjø():
             time.sleep(2)
         elif i == "Random_kar":
             print("Din uvenn Random_Kar dukket opp og merga med kongen +3 dmg")
-            fiendedmg += 5
+            fiendedmg += 3
             time.sleep(2)
 
 
