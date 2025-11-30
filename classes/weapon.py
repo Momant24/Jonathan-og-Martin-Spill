@@ -16,8 +16,8 @@ class Weapon:
             self._dmg = 5
         elif typ == "Reke_Sjell":
             self._dmg = 7
-        elif typ == "Polearm":
-            self._dmg = 10
+        elif typ == "Sverd":
+            self._dmg = 8
         elif typ == "bow":
             self._dmg = 7
 
