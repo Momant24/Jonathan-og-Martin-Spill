@@ -6,11 +6,13 @@ from classes import Player, Enemy
 fiend = Enemy("Orc", 75, 1.5, 0.5, "Pinne", 0)
 fiend2 = Enemy("Brennende_Tree", 15, 1.1, 0.9, "Edel_Pinne", 0)
 reke = Enemy("Giga_Reke", 60, 1.5, 0.5, "Reke_Sjell", 0)
+Ridder = Enemy("Ridder", 120, 1.5, 0.5, "Sverd", 0)
 def randomEncount(karakter, fiende):
-    randEnc = randint(1,3)
+    randEnc = randint(1,5)
     if randEnc >= 2:
         print(f"Du har møtt på en {fiende._name}!")
-        retryFight(karakter, fiende)
+        omvant = retryFight(karakter, fiende)
+        return omvant
     elif randEnc < 2:
         print(f"{fiende._name} så deg ikke og du slapp unna.")
         
@@ -157,6 +159,47 @@ def nytt_sted():
 
 def ettervulkaninsjø():
     print("Du ser et slott")
+    time.sleep(1)
+    print("Du går mot slottet")
+    time.sleep(2)
+    print("Du går inn i slottet")
+    time.sleep(3)
+    print("Er ikke dette spennende")
+    time.sleep(1)
+    print("Du går bortover gangen")
+    time.sleep(1)
+    result = randomEncount(Karakteren, Ridder)
+    if result == "vant":
+        Karakteren.nyvopen("Sverd")
+        Karakteren.plusdefence(0.2)
+        Karakteren.fultliv()
+        result = ""
+        print(f"Du her nå {Karakteren._typ} som våpen")
+        print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
+    input("Du går opp en trapp. (Trykk enter)")
+    result = randomEncount(Karakteren, Ridder)
+    if result == "vant":
+        Karakteren.nyvopen("Sverd")
+        Karakteren.plusdefence(0.2)
+        Karakteren.fultliv()
+        result = ""
+        print(f"Du her nå {Karakteren._typ} som våpen")
+        print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
+    input("Du går bortover enda en gang (trykk enter): ")
+    result = randomEncount(Karakteren, Ridder)
+    if result == "vant":
+        Karakteren.nyvopen("Sverd")
+        Karakteren.plusdefence(0.2)
+        Karakteren.fultliv()
+        result = ""
+        print(f"Du her nå {Karakteren._typ} som våpen")
+        print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
+    
+    
+    
+
+
+
 
 
 def EnmyDmg_taken(fiende, karakter):
@@ -301,10 +344,4 @@ if Start.lower() == "s":
         Karakteren.dmg_verden(10)
         print(f"Du falt ned til den den frydige skogen og tok 10 dm du har nå {Karakteren.liv_igjenn()} hp igjenn")
         skog()
-
-        
-
-
-
-   
 
