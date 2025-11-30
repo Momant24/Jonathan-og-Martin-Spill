@@ -47,7 +47,7 @@ class Player(Entity, Weapon):
 
     def dmg_verden(self, minusdm):
        self._hp = self._hp - minusdm
-       if self._hp < self._maxHp:
+       if self._hp > self._maxHp:  #Dette er meningen
            self._maxHp = self._hp
     
     def fultliv(self):
