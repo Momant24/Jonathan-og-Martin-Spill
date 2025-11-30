@@ -3,12 +3,14 @@ import os
 from random import randint
 from classes import Player, Enemy
 
+#variabler for fiender du kan møte i gamet
 fiend = Enemy("Orc", 15, 1.5, 0.5, "Pinne", 0)
 fiend2 = Enemy("Brennende_Tree", 40, 1.1, 0.9, "Edel_Pinne", 0)
 reke = Enemy("Giga_Reke", 60, 1.5, 0.5, "Reke_Sjell", 0)
 Ridder = Enemy("Ridder", 40, 1.5, 0.5, "Sverd", 0)
 Vokter = Enemy("Ridder", 70, 1.5, 0.5, "Vokter_Pinne", 0)
 
+#Tillfeldig møte på fiender
 def randomEncount(karakter, fiende):
     randEnc = randint(1,8)
     if karakter._fiske_onde < 2:
@@ -24,6 +26,7 @@ def randomEncount(karakter, fiende):
 venner = []
 uvenner = []
 
+#Funksjoneer for navigasjon i spillet, altså hva som skjer hvert valg spiller tar
 def skog():
     global venner
     valg = input("I skogen ser du et stort tre som er i full flamme ønsker du å risikere å bli angrepet ved å slukke treet(1), løpe vekk å gjemme deg(2), eller angripe på forhond?(3) ")
@@ -217,9 +220,9 @@ def ettervulkaninsjø():
     
 
 
+#funksjoner for dmg og combat, attakc og healing funksjoner er i sine respektive klasser
 
-
-
+#funksjon for skade på fiende
 def EnmyDmg_taken(fiende, karakter):
     fiende._hp -= Player.attack(karakter, fiende)
     if fiende._hp > 0:
@@ -228,7 +231,7 @@ def EnmyDmg_taken(fiende, karakter):
         fiende._hp = 0
         print(f"{fiende._name} har {fiende._hp} hp igjen \n \n")
     
-        #funksjon for skade på spiller
+#funksjon for skade på spiller
 def PlayerDmg_taken(karakter, fiende):
     karakter._hp -= Enemy.attack(fiende, karakter)
     if karakter._hp > 0:
@@ -296,7 +299,8 @@ def kjemper(karakter, fiende):
     elif fiende._hp <= 0:       
          print(f"{fiende._name} er død, du vant!")
    
-        
+
+#funksjonen som skal kalles for å kunne gå inn i combat med muligheten for å kunne prøve på nytt igjen
 def retryFight(karakter, fiende):
     matchCount = 0
     while True:
@@ -329,7 +333,7 @@ def retryFight(karakter, fiende):
                 return "tap"
                 
 
-
+#start spillet
 Start = input("Press s og så enter for å starte gamet: ")
 os.system("cls")
 

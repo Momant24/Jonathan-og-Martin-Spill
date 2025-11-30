@@ -17,7 +17,8 @@ class Player(Entity, Weapon):
     def plusdefence(self, ekstradf):
         self._defence = self._defence + ekstradf
         return f"Du har nå {self._defence} i defence"
-      
+    
+      #arrack funksjon som kalles i enemydmg taken funksjonen i game.py
     def attack(self, fiende):
         critRate = randint(1,2)
         atk = self._dmg / self._strength
@@ -26,6 +27,7 @@ class Player(Entity, Weapon):
         print(f"\n{self._name} gjorde {round(critDmg)} skade på {fiende._name}")
         return round(critDmg)
     
+    #healer spiller funkjsonen
     def playerHeal(self): 
         potion = randint(1,3)
         helth = 0
@@ -53,14 +55,6 @@ class Player(Entity, Weapon):
 
     def liv_igjenn(self):
         return(self._hp)
-            
-spiller = Player("bob", 150, 1.5, 0.7, "Polearm", 45)
-
-
-    
-# print(spiller)
-# Player.attack(spiller)
-# Player.dmg_taken(spiller)
 
 
         
