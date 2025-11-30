@@ -64,8 +64,9 @@ def skog():
         if result == "tap":
             skog()
         else:
-            print("Du tar edel pinnen fra det døde tret, men føler at trerne rundt deg skygger surt over deg. Du kynter deg ut av skogen")
+            print("Du tar edel pinnen fra det døde tret, men føler at trerne rundt deg skygger surt over deg. Du skynter deg ut av skogen")
             Karakteren.nyvopen("Edel_Pinne")
+            uvenner.append("Skog")
             print(f"Du her nå {Karakteren._typ} som våpen")
             print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
             nytt_sted()
@@ -168,6 +169,7 @@ def ettervulkaninsjø():
     time.sleep(3)
     print("Er ikke dette spennende")
     o = input("SI JA")
+    os.system("cls")
     if o.lower() == "ja":
         pass
     else:
@@ -184,6 +186,7 @@ def ettervulkaninsjø():
         print(f"Du her nå {Karakteren._typ} som våpen")
         print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
     input("Du går opp en trapp. (Trykk enter)")
+    os.system("cls")
     result = randomEncount(Karakteren, Ridder)
     if result == "vant":
         Karakteren.nyvopen("Sverd")
@@ -193,6 +196,7 @@ def ettervulkaninsjø():
         print(f"Du her nå {Karakteren._typ} som våpen")
         print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
     input("Du går bortover enda en gang (trykk enter): ")
+    os.system("cls")
     result = randomEncount(Karakteren, Ridder)
     if result == "vant":
         Karakteren.nyvopen("Sverd")
@@ -202,16 +206,63 @@ def ettervulkaninsjø():
         print(f"Du her nå {Karakteren._typ} som våpen")
         print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
     input("Du går mot to kjempestore dører. Enter: ")
+    os.system("cls")
     result = randomEncount(Karakteren, Vokter)
     if result == "vant":
         Karakteren.nyvopen("Vokter_Pinne")
         Karakteren.plusdefence(0.2)
         Karakteren.fultliv()
         result = ""
-        print(f"Du her nå {Karakteren._typ} som våpen")
+        print(f"Du har nå {Karakteren._typ} som våpen")
         print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
-    input("Du sniker deg gjennom de to dørene. På den andre siden ser du et kjempemonster av alle dine uvenner. Du blåser i hornet ditt og vennene dine kommer")
-    
+    input("Du sniker deg gjennom de to dørene. På den andre siden ser du et kjempemonster av alle dine uvenner. Du blåser i hornet ditt og vennene dine kommer: ")
+    os.system("cls")
+    for i in venner:
+        if i == "Storttree":
+            Karakteren.dmg_verden(-100)
+            print("Vennen ditt treet møtter opp og gir deg 100 mer hp")
+            time.sleep(2)
+        elif i == "Storreke":
+            Karakteren.midlertidigdmg(5)
+            print("Vennen ditt Storreke møtter opp og gir deg 5 mer dmg")
+            time.sleep(2)
+        elif i == "Vulkan":
+            print("Vennen ditt Vulkanen møtter opp og gir deg 0.5 mer dfence")
+            Karakteren.plusdefence(0.5)
+            time.sleep(2)
+    print(Karakteren)
+    fiendedmg = 10
+    fiendehp = 100
+    fiendedefence = 1.5
+    time.sleep(2)
+    for i in uvenner:
+        if i == "Skog":
+            print("Din uvenn skogen dukket opp og merga med kongen +35 hp")
+            fiendehp += 35
+            time.sleep(2)
+        elif i == "Storreke":
+            print("Din uvenn Megareken dukket opp og merga med kongen +0,4 dfence")
+            fiendedefence += 0.4
+            time.sleep(2)
+        elif i == "Random_kar":
+            print("Din uvenn Random_Kar dukket opp og merga med kongen +5 dmg")
+            fiendedmg += 5
+            time.sleep(2)
+
+
+    Konge = Enemy("Konge_og_Finder_Blanding", fiendehp, fiendedefence, 0.5, "", fiendedmg)
+    result4 = retryFight(Karakteren, Konge)
+    if result4 == "tap":
+        print("Du tapte trist")
+    else:
+        print("Du vant og uvennene dine er døde wohhhooooo")
+
+                
+
+
+
+            
+
 
     
     
@@ -336,7 +387,7 @@ os.system("cls")
 
 if Start.lower() == "s":
     print("Starter spill")
-    for i in range(0):
+    for i in range(2):
         print("*", end="\r")
         time.sleep(0.5)
         print(" *", end="\r")
