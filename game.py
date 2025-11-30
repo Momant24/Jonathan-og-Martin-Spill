@@ -252,7 +252,7 @@ def ettervulkaninsjø():
             time.sleep(2)
 
 
-    Konge = Enemy("Konge_og_Finder_Blanding", fiendehp, fiendedefence, 0.5, "", fiendedmg)
+    Konge = Enemy("Konge_og_Finder_Blanding", fiendehp, fiendedefence, 0.5, "Mutant hender", fiendedmg)
     result4 = retryFight(Karakteren, Konge)
     if result4 == "tap":
         print("Du tapte trist")
