@@ -165,6 +165,11 @@ def ettervulkaninsjø():
     print("Du går inn i slottet")
     time.sleep(3)
     print("Er ikke dette spennende")
+    o = input("SI JA")
+    if o.lower() == "ja":
+        pass
+    else:
+        print("Det er spennende, du er bare kjedelig og dum")
     time.sleep(1)
     print("Du går bortover gangen")
     time.sleep(1)

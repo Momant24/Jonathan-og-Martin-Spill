@@ -1,5 +1,3 @@
-import time
-import os
 from random import randint
 from classes import Player, Enemy
 import pytest
