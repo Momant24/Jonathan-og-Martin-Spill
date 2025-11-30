@@ -8,12 +8,12 @@ fiend2 = Enemy("Brennende_Tree", 40, 1.1, 0.9, "Edel_Pinne", 0)
 reke = Enemy("Giga_Reke", 60, 1.5, 0.5, "Reke_Sjell", 0)
 Ridder = Enemy("Ridder", 40, 1.5, 0.5, "Sverd", 0)
 def randomEncount(karakter, fiende):
-    randEnc = randint(1,5)
+    randEnc = randint(1,8)
     if randEnc <= 2:
         print(f"Du har møtt på en {fiende._name}!")
         omvant = retryFight(karakter, fiende)
         return omvant
-    elif randEnc > 3:
+    elif randEnc > 2:
         print(f"{fiende._name} så deg ikke og du slapp unna.")
         
 
