@@ -36,7 +36,7 @@ class Player(Entity, Weapon):
         elif potion == 3:
             helth = 5
         self._hp = self._hp + helth
-        if self._hp < self._maxHp:
+        if self._hp > self._maxHp:
             self._hp = self._maxHp
         print(f"\n du helbredet {helth} hp \n du har nå {self._hp} hp \n\n")
 
@@ -45,6 +45,8 @@ class Player(Entity, Weapon):
 
     def dmg_verden(self, minusdm):
        self._hp = self._hp - minusdm
+       if self._hp < self._maxHp:
+           self._maxHp = self._hp
     
     def fultliv(self):
         self._hp = self._maxHp

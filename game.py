@@ -3,7 +3,9 @@ import os
 from random import randint
 from classes import Player, Enemy
 
-fiend = Enemy("Orc", 75, 1.5, 0.5, "pinne", 0)
+fiend = Enemy("Orc", 75, 1.5, 0.5, "Pinne", 0)
+fiend2 = Enemy("Brennende_Tree", 15, 1.1, 0.9, "Edel_Pinne", 0)
+reke = Enemy("Giga_Reke", 60, 1.5, 0.5, "Reke_Sjell", 0)
 def randomEncount(karakter, fiende):
     randEnc = randint(1,3)
     if randEnc >= 2:
@@ -26,6 +28,9 @@ def skog():
     if valg == "1":
         print("Sekken din beynner å brenne å du mister 20 hp. Men du redder det gigantiske treet og han gir deg en edel pinne som gjør 5dm og sier at hvis du noen gang trenger hjelp vil han komme til din hjelp!")
         Karakteren.nyvopen("Edel_Pinne")
+        Karakteren.dmg_verden(20)
+        print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
+
         print(f"Du her nå {Karakteren._typ} som våpen")
         venner.append("Storttree")
         nytt_sted()
@@ -40,7 +45,7 @@ def skog():
             valg2 = input("Feil velg enten 1 eller 2: ")
         if valg2 == "2":
             print("Treet har brent opp til aske og du finner en Svidd_Edel_Pinne, men det detter en fugl i hodet ditt og du tar 20 dm")
-            Karakteren.dmg_verden(20)
+            Karakteren.dmg_verden(25)
             Karakteren.nyvopen("Svidd_Edel_Pinne")
             print(f"Du her nå {Karakteren._typ} som våpen")
             print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
@@ -51,9 +56,18 @@ def skog():
     
     else:
         print("Du kjemper")
+        result = retryFight(Karakteren, fiend2)
+        if result == "tap":
+            skog()
+        else:
+            print("Du tar edel pinnen fra det døde tret, men føler at trerne rundt deg skygger surt over deg. Du kynter deg ut av skogen")
+            Karakteren.nyvopen("Edel_Pinne")
+            print(f"Du her nå {Karakteren._typ} som våpen")
+            print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
+            nytt_sted()
        
 def nytt_sted():
-    
+    time.sleep(3)
     global Fiskeånde
     global venner
     global uvenner
@@ -61,10 +75,10 @@ def nytt_sted():
     valg3 = input("Du ser en vakker insjø(1), og en stor glødene vulkan(2). Hvor vil du gå?: ")
     os.system("cls")
     while valg3 != "1" and valg3 != "2":
-        valg4 = input("Feil velg enten 1 eller 2: ")
+        valg3 = input("Feil velg enten 1 eller 2: ")
 
     if valg3 == "1":
-        randomEncount(Karakteren, fiend)
+        result = randomEncount(Karakteren, fiend)
         valg4 = input("Til venstre ser du insjøen dele seg i to som jesus står gjemt bak et tre og holder veien framover åpen for deg(1), eller ønsker du å ungå denne tråldommen og svømme over, du skimter små fisk i vannet(2): ")
         os.system("cls")
         while valg4 != "1" and valg4 != "2":
@@ -99,19 +113,30 @@ def nytt_sted():
             Karakteren.plusdefence(0.4)
             venner.append("Storreke")
         elif valg6 == "2":
-            print("Reken blir veldig overasket og dytter deg vekk, du får et rekeskjell i beinet og mister dfence. Men du fikk en bit av reken og healer 5 hp og får en ekstra fiskeånde. Du har en følelse at reken vil huske dette i framtiden")
+            print("Reken blir veldig overasket og dytter deg vekk, du får et rekesjell i beinet og mister dfence. Men du fikk en bit av reken og healer 5 hp og får en ekstra fiskeånde. Du har en følelse at reken vil huske dette i framtiden")
             Fiskeånde += 1
             uvenner.append("Storreke")
             Karakteren.plusdefence(-0.4)
         else:
             print("Du angriper reken")
+
+            result = retryFight(Karakteren, reke)
+            if result == "tap":
+                nytt_sted()
+            else:
+                print("Du tar reken sin hale og rekesjell som våpen 7dm. Du bruker halen som armor det gir deg pluss 0.5 dfence")
+                Karakteren.plusdefence(0.4)
+                Karakteren.nyvopen("Reke_Sjell")
+                print(f"Du her nå {Karakteren._typ} som våpen")
+                print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
+                
         ettervulkaninsjø()
 
                 
     else:
         valg7 = input("Du er å toppen av en stor glødene vulkan ønsker du å hoppe oppi(1), danse en reindans på toppen av vulkanen(2), eller offre en random kar som står på den andre siden av krateret av deg?(3) ")
         os.system("cls")
-        while valg7 != "1" and valg7 != "2" and valg7 != 3:
+        while valg7 != "1" and valg7 != "2" and valg7 != "3":
             valg7 = input("Feil velg enten 1 eller 2 eller 3: ")
         if valg7 == "1":
             print("Vulkanen rumler godt og fornøyd du får et deigelig varmt bad i magmaen og får fult liv og magma armor + 0.4 defence. og en vulkann venn for livet.")
@@ -208,23 +233,29 @@ def kjemper(karakter, fiende):
         print(f"{karakter._name} døde, hva er det du gjør?")
         
     elif fiende._hp <= 0:       
-         print(f"{fiende._name} er død, du vant!")   
+         print(f"{fiende._name} er død, du vant!")
+   
         
 def retryFight(karakter, fiende):
     matchCount = 0
     while True:
         kjemper(karakter, fiende)
-        
+        matchCount += 1
         if karakter._hp > 0:
+            
             if matchCount == 1:
                 print(f" \n gratulerer, du drepte {fiende._name}!")
+                return "vant"
             elif matchCount == 2:
                 print(f" {karakter._name}, {karakter._name}, {karakter._name}, hvordan klarte du det ikke på første forsøk?? {time.sleep(0.2)} \n {fiende._name} er lett å drepe...")
+                return "vant"
             elif matchCount == 3:
                 print(" Du overlevde. Det tok deg noen forsøk da. kanskje du har tatt feil valg til nå... ")
-            elif matchCount < 3:
+                return "vant"
+            elif matchCount > 3:
                 print(f"avslutter kamp... {time.sleep(0.3)} \n {karakter._name}, du skuffer... \n {matchCount} forsøk, du er ASSS")
-                break
+                return "vant"
+                
             break
             
         else: 
@@ -234,7 +265,8 @@ def retryFight(karakter, fiende):
                 fiende._hp = fiende._maxHp
             else: 
                 print(f"avslutter kamp... {time.sleep(0.3)} \n {karakter._name}, du skuffer...")
-                break
+                return "tap"
+                
 
 
 Start = input("Press s og så enter for å starte gamet: ")

@@ -22,13 +22,13 @@ class Enemy(Entity, Weapon):
         potion = randint(1,3)
         helth = 0
         if potion == 1:
-            helth = 10
+            helth = 6
         elif potion == 2:
-            helth = 5
+            helth = 4
         elif potion == 3:
             helth = 0
         self._hp = self._hp + helth
-        if self._hp < self._maxHp:
+        if self._hp > self._maxHp:
             self._hp = self._maxHp
         print(f"\n{self._name} helbredet {helth} hp \n {self._name} har nå {self._hp} hp\n\n")
 
