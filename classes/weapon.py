@@ -18,8 +18,8 @@ class Weapon:
             self._dmg = 7
         elif typ == "Sverd":
             self._dmg = 8
-        elif typ == "bow":
-            self._dmg = 7
+        elif typ == "Vokter_Pinne":
+            self._dmg = 9
 
     def nyvopen(self, ny):
         self._typ = ny

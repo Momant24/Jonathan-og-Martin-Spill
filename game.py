@@ -7,6 +7,7 @@ fiend = Enemy("Orc", 15, 1.5, 0.5, "Pinne", 0)
 fiend2 = Enemy("Brennende_Tree", 40, 1.1, 0.9, "Edel_Pinne", 0)
 reke = Enemy("Giga_Reke", 60, 1.5, 0.5, "Reke_Sjell", 0)
 Ridder = Enemy("Ridder", 40, 1.5, 0.5, "Sverd", 0)
+Vokter = Enemy("Ridder", 70, 1.5, 0.5, "Vokter_Pinne", 0)
 
 def randomEncount(karakter, fiende):
     randEnc = randint(1,8)
@@ -202,6 +203,18 @@ def ettervulkaninsjø():
         result = ""
         print(f"Du her nå {Karakteren._typ} som våpen")
         print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
+    input("Du går mot to kjempestore dører. Enter: ")
+    result = randomEncount(Karakteren, Vokter)
+    if result == "vant":
+        Karakteren.nyvopen("Vokter_Pinne")
+        Karakteren.plusdefence(0.2)
+        Karakteren.fultliv()
+        result = ""
+        print(f"Du her nå {Karakteren._typ} som våpen")
+        print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
+    input("Du sniker deg gjennom de to dørene. På den andre siden ser du et kjempemonster av alle dine uvenner. Du blåser i hornet ditt og vennene dine kommer")
+    
+
     
     
     
