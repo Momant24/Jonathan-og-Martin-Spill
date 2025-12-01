@@ -4,11 +4,11 @@ from random import randint
 from classes import Player, Enemy
 
 #variabler for fiender du kan møte i gamet
-fiend = Enemy("Orc", 15, 1.5, 0.5, "Pinne", 0)
+fiend = Enemy("Orc", 15, 1.5, 0.8, "Pinne", 0)
 fiend2 = Enemy("Brennende_Tree", 40, 1.1, 0.9, "Edel_Pinne", 0)
-reke = Enemy("Giga_Reke", 60, 1.5, 0.5, "Reke_Sjell", 0)
-Ridder = Enemy("Ridder", 40, 1.5, 0.5, "Sverd", 0)
-Vokter = Enemy("Vokter", 70, 1.5, 0.5, "Vokter_Pinne", 0)
+reke = Enemy("Giga_Reke", 60, 1.5, 0.8, "Reke_Sjell", 0)
+Ridder = Enemy("Ridder", 40, 1.5, 0.7, "Sverd", 0)
+Vokter = Enemy("Vokter", 70, 1.5, 0.67, "Vokter_Pinne", 0)
 
 #Tillfeldig møte på fiender
 def randomEncount(karakter, fiende):
