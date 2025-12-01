@@ -9,17 +9,17 @@ class Weapon:
     def set_damage(self):  
         typ = self._typ 
         if typ == "Skjor_Pinne":
-            self._dmg = 1
-        elif typ == "Pinne":
             self._dmg = 2
+        elif typ == "Pinne":
+            self._dmg = 4
         elif typ == "Edel_Pinne":
-            self._dmg = 5
+            self._dmg = 10
         elif typ == "Reke_Sjell":
-            self._dmg = 7
+            self._dmg = 14
         elif typ == "Sverd":
-            self._dmg = 8
+            self._dmg = 16
         elif typ == "Vokter_Pinne":
-            self._dmg = 9
+            self._dmg = 18
 
     def nyvopen(self, ny):
         self._typ = ny

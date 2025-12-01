@@ -32,11 +32,11 @@ class Player(Entity, Weapon):
         potion = randint(1,3)
         helth = 0
         if potion == 1:
-            helth = 20
+            helth = 25
         elif potion == 2:
-            helth = 10
+            helth = 17
         elif potion == 3:
-            helth = 5
+            helth = 10
         self._hp = self._hp + helth
         if self._hp > self._maxHp:
             self._hp = self._maxHp
