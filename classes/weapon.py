@@ -14,6 +14,8 @@ class Weapon:
             self._dmg = 4
         elif typ == "Edel_Pinne":
             self._dmg = 10
+        elif typ == "Piraya_Pinne":  
+            self._dmg = 12
         elif typ == "Reke_Sjell":
             self._dmg = 14
         elif typ == "Sverd":

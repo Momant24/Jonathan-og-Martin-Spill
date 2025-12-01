@@ -35,7 +35,7 @@ def skog():
     while valg != "1" and valg != "2" and valg != "3":
         valg = input("Feil velg enten 1 eller 2 eller 3: ")
     if valg == "1":
-        print("Sekken din beynner å brenne å du mister 20 hp. Men du redder det gigantiske treet og han gir deg en edel pinne som gjør 5dm og sier at hvis du noen gang trenger hjelp vil han komme til din hjelp!")
+        print("Sekken din beynner å brenne å du mister 20 hp. Men du redder det gigantiske treet og han gir deg en edel pinne som gjør 10dm og sier at hvis du noen gang trenger hjelp vil han komme til din hjelp!")
         Karakteren.nyvopen("Edel_Pinne")
         Karakteren.dmg_verden(20)
         print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
@@ -132,7 +132,7 @@ def nytt_sted():
             if result == "tap":
                 nytt_sted()
             else:
-                print("Du tar reken sin hale og rekesjell som våpen 7dm. Du bruker halen som armor det gir deg pluss 0.5 dfence")
+                print("Du tar reken sin hale og rekesjell som våpen 14dm. Du bruker halen som armor det gir deg pluss 0.5 dfence")
                 Karakteren.plusdefence(0.4)
                 Karakteren.nyvopen("Reke_Sjell")
                 print(f"Du her nå {Karakteren._typ} som våpen")
@@ -185,7 +185,7 @@ def ettervulkaninsjø():
         Karakteren.nyvopen("Sverd")
         Karakteren.plusdefence(0.2)
         Karakteren.fultliv()
-        result = ""
+        result = None
         print(f"Du her nå {Karakteren._typ} som våpen")
         print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
     input("Du går opp en trapp. (Trykk enter)")
@@ -195,7 +195,7 @@ def ettervulkaninsjø():
         Karakteren.nyvopen("Sverd")
         Karakteren.plusdefence(0.2)
         Karakteren.fultliv()
-        result = ""
+        result = None
         print(f"Du her nå {Karakteren._typ} som våpen")
         print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
     input("Du går bortover enda en gang (trykk enter): ")
@@ -205,7 +205,7 @@ def ettervulkaninsjø():
         Karakteren.nyvopen("Sverd")
         Karakteren.plusdefence(0.2)
         Karakteren.fultliv()
-        result = ""
+        result = None
         print(f"Du her nå {Karakteren._typ} som våpen")
         print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
     input("Du går mot to kjempestore dører. Enter: ")
@@ -215,7 +215,7 @@ def ettervulkaninsjø():
         Karakteren.nyvopen("Vokter_Pinne")
         Karakteren.plusdefence(0.2)
         Karakteren.fultliv()
-        result = ""
+        result = None
         print(f"Du har nå {Karakteren._typ} som våpen")
         print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
     input("Du sniker deg gjennom de to dørene. På den andre siden ser du et kjempemonster av alle dine uvenner. Du blåser i hornet ditt og vennene dine kommer: ")
@@ -227,17 +227,17 @@ def ettervulkaninsjø():
             print("Vennen ditt treet møtter opp og gir deg 60 mer hp")
             time.sleep(2)
         elif i == "Storreke":
-            Karakteren.midlertidigdmg(3)
-            print("Vennen ditt Storreke møtter opp og gir deg 3 mer dmg")
+            Karakteren.midlertidigdmg(6)
+            print("Vennen ditt Storreke møtter opp og gir deg 6 mer dmg")
             time.sleep(2)
         elif i == "Vulkan":
             print("Vennen ditt Vulkanen møtter opp og gir deg 0.5 mer dfence")
             Karakteren.plusdefence(0.5)
             time.sleep(2)
     print(Karakteren)
-    fiendedmg = 9
+    fiendedmg = 18
     fiendehp = 100
-    fiendedefence = 1.5
+    fiendedefence = 2
     time.sleep(2)
     for i in uvenner:
         if i == "Skog":
@@ -249,11 +249,11 @@ def ettervulkaninsjø():
             fiendedefence += 0.4
             time.sleep(2)
         elif i == "Random_kar":
-            print("Din uvenn Random_Kar dukket opp og merga med kongen +3 dmg")
-            fiendedmg += 3
+            print("Din uvenn Random_Kar dukket opp og merga med kongen +6 dmg")
+            fiendedmg += 6
             time.sleep(2)
 
-
+    input("Er du klar for å kjempe?: ")
     Konge = Enemy("Konge_og_Finder_Blanding", fiendehp, fiendedefence, 0.5, "Mutant hender", fiendedmg)
     result4 = retryFight(Karakteren, Konge)
     if result4 == "tap":
