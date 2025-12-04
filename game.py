@@ -155,6 +155,8 @@ def nytt_sted():
         elif valg7 == "2":
             print("Regngudene har hørt ditt bønn og det starter å reine i bøtter og spann. Vulkanen rumler uhyggelig og du lukter en kvalmende lukt av egg. Før vulkanen stivner til og dør tar du 30 dmg av den giftige hevnen til vulkanen.")
             Karakteren.dmg_verden(30)
+            print("Magmamonster er nå uvennen din")
+            uvenner.append("Magmamonster")
             print(f"Du har nå {Karakteren.liv_igjenn()} hp igjenn")
         
         else:
@@ -252,6 +254,9 @@ def ettervulkaninsjø():
             print("Din uvenn Random_Kar dukket opp og merga med kongen +6 dmg")
             fiendedmg += 6
             time.sleep(2)
+        elif i == "Magmamonster":
+            print("Din uven Magmamonster dukket opp og merga med kongen +40 hp")
+            fiendehp += 40
 
     input("Er du klar for å kjempe?: ")
     Konge = Enemy("Konge_og_Finder_Blanding", fiendehp, fiendedefence, 0.5, "Mutant hender", fiendedmg)
