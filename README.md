@@ -9,19 +9,17 @@ En vei kan hende ineholder et klikker spil og så videre eller andre mini ting d
 
 ## funksjonalitet til spillet
 multichoice, 
-upgrade player, gambling, take dmg attack, 
+upgrade player, gambling, take dmg attack 
 
 
 ## utviklingsmetode
 
-Vi har valgt Smidig, fordi, det kan bli endringer under utviklingen og, derfor er det viktig at vi kan endre koden under utviklingen
+Vi har valgt Smidig, fordi, det kan bli endringer under utviklingen og, derfor er det viktig at vi kan endre koden under utviklingen. Da er det lettere og teste underveis da man ikke lager et ferdig produkt og så tester.
 
 ## klasssediagram
 Klassediagram blir levert av en engel i powerpoint format
 
 
 ## plan for videre arbeid
-Starte med starten og prøve å slutte ved slutten
-
-FÅ SPILLET TIL Å FAKTISK FUNKE SELVOM DET KAnSKJE IKKE ER 100% SLIK VI VIL, SÅLENGE DET FUNKER OG ATLT ANNET ER BRA SÅ ER DET FERDIG.
 Jobbe godt gjennom timene for å komme lengt og fullføre hvis det trengs hjemme
+Prøve nye ting å prøve å lære av det for å kunne utvikkle egenskapene våre og bli bedre til å programere
